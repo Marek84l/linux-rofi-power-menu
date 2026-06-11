@@ -1,0 +1,67 @@
+configuration {
+    font: "JetBrainsMono Nerd Font 12";
+    show-icons: false;
+}
+
+* {
+    background:     #11121dcc;
+    background-alt: #1a1b26dd;
+    foreground:     #c0caf5;
+    selected:       #7aa2f7;
+    accent:         #bb9af7;
+}
+
+window {
+    transparency: "real";
+    location: east;
+    anchor: east;
+    x-offset: -30px;
+    y-offset: 0px;
+    width: 260px;
+    border: 0px;
+    border-radius: 14px;
+    background-color: @background;
+}
+
+mainbox {
+    spacing: 10px;
+    padding: 16px;
+    background-color: @background;
+}
+
+inputbar {
+    padding: 8px;
+    border-radius: 10px;
+    background-color: @background-alt;
+}
+
+prompt {
+    text-color: @accent;
+}
+
+entry {
+    text-color: @foreground;
+}
+
+listview {
+    lines: 5;
+    spacing: 8px;
+    background-color: transparent;
+}
+
+element {
+    padding: 9px;
+    border-radius: 10px;
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element selected {
+    background-color: @selected;
+    text-color: #11121d;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+}

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+chosen=$(printf "  Lock\n⏾  Suspend\n  Logout\n  Restart\n  Shutdown" | rofi \
+    -dmenu \
+    -i \
+    -p "Power" \
+    -theme "$HOME/.config/rofi/power-menu.rasi")
+
+case "$chosen" in
+    "  Lock")
+        if command -v cinnamon-screensaver-command >/dev/null 2>&1; then
+            cinnamon-screensaver-command -l
+        elif command -v i3lock >/dev/null 2>&1; then
+            i3lock
+        elif command -v loginctl >/dev/null 2>&1; then
+            loginctl lock-session
+        fi
+        ;;
+    "⏾  Suspend")
+        systemctl suspend
+        ;;
+    "  Logout")
+        if command -v cinnamon-session-quit >/dev/null 2>&1; then
+            cinnamon-session-quit --logout --no-prompt
+        elif command -v i3-msg >/dev/null 2>&1; then
+            i3-msg exit
+        else
+            loginctl terminate-user "$USER"
+        fi
+        ;;
+    "  Restart")
+        systemctl reboot
+        ;;
+    "  Shutdown")
+        systemctl poweroff
+        ;;
+esac
